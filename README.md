@@ -70,9 +70,9 @@ I'm a passionate self-taught full-stack and mobile application developr from Ind
 
 ## How To Reach Me
 
-[![LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/rutajdash)
-[![Discord](https://img.shields.io/badge/%3CServer%3E-%237289DA.svg?style=for-the-badge&logo=discord&logoColor=white)](https://discordapp.com/channels/@me/722740308575780965)
-[![Facebook](https://img.shields.io/badge/Facebook-%231877F2.svg?style=for-the-badge&logo=Facebook&logoColor=white)](https://www.facebook.com/rutaj.dash)
+[![LinkedIn](https://img.shields.io/badge/rutajdash-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/rutajdash)
+[![Discord](https://img.shields.io/badge/RDJ%236034-%237289DA.svg?style=for-the-badge&logo=discord&logoColor=white)](https://discordapp.com/channels/@me/722740308575780965)
+[![Facebook](https://img.shields.io/badge/rutaj.dash-%231877F2.svg?style=for-the-badge&logo=Facebook&logoColor=white)](https://www.facebook.com/rutaj.dash)
 [![Twitter](https://img.shields.io/badge/rutajdash06-%231DA1F2.svg?style=for-the-badge&logo=Twitter&logoColor=white)](https://www.twitter.com/rutajdash06)
 [![Instagram](https://img.shields.io/badge/rutajdash06-%23E4405F.svg?style=for-the-badge&logo=Instagram&logoColor=white)](https://instagram.com/rutajdash06)
 
