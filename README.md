@@ -9,7 +9,7 @@ I'm a passionate self-taught full-stack and mobile application developr from Ind
 - Currently working on [Project Vormir](https://github.com/coep-astronomy/project-vormir)
 - Learning TypeScript and Next.js
 - An avid supporter of open source development
-- Always open to opportunites and collaborations
+- Always open to opportunities and collaborations
 - Most experience in Node.js and Apollo GraphQL
 
 ## What I Work With
