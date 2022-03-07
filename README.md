@@ -6,7 +6,6 @@ I'm a passionate self-taught full-stack and mobile application developr from Ind
 
 - From Bhubaneswar, Odisha, India
 - A pre-final year student of [NIT Rourkela](https://nitrkl.ac.in)
-- Currently working on [Project Vormir](https://github.com/coep-astronomy/project-vormir)
 - Learning TypeScript and Next.js
 - An avid supporter of open source development
 - Always open to opportunities and collaborations
