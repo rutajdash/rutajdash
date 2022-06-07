@@ -5,11 +5,13 @@
 I'm a passionate self-taught full-stack and mobile application developr from India.
 
 - From Bhubaneswar, Odisha, India
-- A pre-final year student of [NIT Rourkela](https://nitrkl.ac.in)
-- Learning TypeScript and Next.js
+- A final year student of [NIT Rourkela](https://nitrkl.ac.in)
 - An avid supporter of open source development
 - Always open to opportunities and collaborations
-- Most experience in Node.js and Apollo GraphQL
+- Most experience in Node.js, Express, Next.js and Apollo GraphQL
+
+## My Contribution Graph
+![](https://activity-graph.herokuapp.com/graph?username=rutajdash&theme=react-dark&hide_border=true&area=true&hide_title=true)
 
 ## What I Work With
 
@@ -77,8 +79,7 @@ I'm a passionate self-taught full-stack and mobile application developr from Ind
 
 ## My Stats
 
-![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=rutajdash&show_icons=true&theme=react)
-
-![GitHub Streak](https://github-readme-streak-stats.herokuapp.com/?user=rutajdash&theme=react)
-
-![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=rutajdash&layout=compact&theme=react&langs_count=6)
+| My GitHub Stats | My GitHub Streak | My Top Languages |
+|--|--|--|
+|![Rutaj's GitHub stats](https://github-readme-stats.vercel.app/api?username=rutajdash&show_icons=true&theme=react)|![GitHub Streak](https://github-readme-streak-stats.herokuapp.com/?user=rutajdash&theme=react)|![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=rutajdash&layout=compact&theme=react&langs_count=6)|
+|  |  |  |
