@@ -10,9 +10,6 @@ I'm a passionate self-taught full-stack and mobile application developer from In
 - Always open to opportunities and collaborations
 - Most experience in Node.js, Express, Next.js and Apollo GraphQL
 
-## My Contribution Graph
-![](https://activity-graph.herokuapp.com/graph?username=rutajdash&theme=react-dark&hide_border=true&area=true&hide_title=true)
-
 ## What I Work With
 
 ### At present:
@@ -34,9 +31,3 @@ I'm a passionate self-taught full-stack and mobile application developer from In
 | LinkedIn | Discord | Twitter |
 |--|--|--|
 | [![LinkedIn](https://img.shields.io/badge/rutajdash-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/rutajdash) | [![Discord](https://img.shields.io/badge/RDJ%236034-%237289DA.svg?style=for-the-badge&logo=discord&logoColor=white)](https://discordapp.com/channels/@me/722740308575780965) | [![Twitter](https://img.shields.io/badge/rutajdash06-%231DA1F2.svg?style=for-the-badge&logo=Twitter&logoColor=white)](https://www.twitter.com/rutajdash06) |
-
-## My Stats
-
-| My GitHub Stats | My GitHub Streak | My Top Languages |
-|--|--|--|
-|![Rutaj's GitHub stats](https://github-readme-stats.vercel.app/api?username=rutajdash&show_icons=true&theme=react)|![GitHub Streak](https://github-readme-streak-stats.herokuapp.com/?user=rutajdash&theme=react)|![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=rutajdash&layout=compact&theme=react&langs_count=6)|
