@@ -1,0 +1,27 @@
+.videoContainer {
+  height: 100vw;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.videoContainer > div {
+  height: 100%;
+  width: auto;
+  background-color: white;
+  overflow: hidden;
+}
+
+.videoContainer video {
+  height: 100%;
+  width: auto;
+  object-fit: cover;
+  transform: translateX(60%);
+  transition: all 2.5s linear;
+  transition-delay: 0.3s;
+  visibility: hidden;
+}
+
+.play {
+  visibility: visible !important;
+  transform: translateX(0) !important;
+}
