@@ -1,0 +1,98 @@
+/* @utility md-bg-* {
+  background-color: --value(--md-sys-color-*);
+}
+
+@utility md-text-* {
+  color: --value(--md-sys-color-*);
+}
+
+@utility md-decoration-* {
+  text-decoration-color: --value(--md-sys-color-*);
+}
+
+@utility md-border-* {
+  border-color: --value(--md-sys-color-*);
+}
+
+@utility md-outline-* {
+  outline-color: --value(--md-sys-color-*);
+}
+
+@utility md-shadow-* {
+  --tw-shadow-color: --value(--md-sys-color-*);
+  box-shadow:
+    var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+}
+
+@utility md-inset-shadow-* {
+  --tw-shadow-color: --value(--md-sys-color-*);
+  box-shadow: inset var(--tw-shadow);
+}
+
+@utility md-ring-* {
+  --tw-ring-color: --value(--md-sys-color-*);
+  --tw-ring-offset-color: var(--background);
+  box-shadow:
+    var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+}
+
+@utility md-inset-ring-* {
+  --tw-ring-color: --value(--md-sys-color-*);
+  --tw-ring-offset-color: var(--background);
+  box-shadow:
+    var(--tw-ring-offset-shadow),
+    inset var(--tw-ring-shadow),
+    var(--tw-shadow);
+}
+
+@utility md-accent-* {
+  accent-color: --value(--md-sys-color-*);
+}
+
+@utility md-caret-* {
+  caret-color: --value(--md-sys-color-*);
+}
+
+@utility md-fill-* {
+  fill: --value(--md-sys-color-*);
+}
+
+@utility md-stroke-* {
+  stroke: --value(--md-sys-color-*);
+} */
+
+@utility icon-weight-* {
+  --font-wght: --value(--font-weight-*);
+}
+
+@utility icon-filled {
+  --font-FILL: 1;
+}
+
+@utility icon-grade-minus-25 {
+  --font-GRAD: -25;
+}
+
+@utility icon-grade-0 {
+  --font-GRAD: 0;
+}
+
+@utility icon-grade-200 {
+  --font-GRAD: 200;
+}
+
+@utility icon-optical-size-20 {
+  --font-opsz: 20;
+}
+
+@utility icon-optical-size-24 {
+  --font-opsz: 24;
+}
+
+@utility icon-optical-size-40 {
+  --font-opsz: 40;
+}
+
+@utility icon-optical-size-48 {
+  --font-opsz: 48;
+}
