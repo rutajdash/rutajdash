@@ -1,3 +1,5 @@
+/* eslint-disable @next/next/google-font-preconnect */
+import AppStoreProvider from "@/data/store/app/AppStoreProvider";
 import type { Metadata } from "next";
 import { IBM_Plex_Sans, Inter, Roboto } from "next/font/google";
 import "./globals.css";
@@ -5,7 +7,7 @@ import "./globals.css";
 const imbPlexSans = IBM_Plex_Sans({
   subsets: ["latin"],
   weight: ["100", "200", "300", "400", "500", "600", "700"],
-  preload: false,
+  preload: true,
   variable: "--font-ibm-plex-sans",
   display: "swap",
 });
@@ -13,7 +15,7 @@ const imbPlexSans = IBM_Plex_Sans({
 const inter = Inter({
   subsets: ["latin"],
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
-  preload: false,
+  preload: true,
   variable: "--font-inter",
   display: "swap",
 });
@@ -39,10 +41,19 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link
+          rel="preload"
+          href="https://fonts.gstatic.com/s/materialsymbolsrounded/v286/sykg-zNym6YjUruM-QrEh7-nyTnjDwKNJ_190FjzaqkNCeE.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin=""
+        />
+      </head>
       <body
         className={`${imbPlexSans.variable} ${inter.variable} ${roboto.variable} antialiased`}
       >
-        {children}
+        <AppStoreProvider>{children}</AppStoreProvider>
       </body>
     </html>
   );

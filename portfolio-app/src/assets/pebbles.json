@@ -1,0 +1,14 @@
+{
+  "videos": [
+    {
+      "id": 1,
+      "url": "/pebbles/Pebbles-Entry-1.mp4",
+      "description": "Pebbles Entry Video 1"
+    },
+    {
+      "id": 2,
+      "url": "/pebbles/Pebbles-Intro-1.mp4",
+      "description": "Pebbles Intro Video 1"
+    }
+  ]
+}

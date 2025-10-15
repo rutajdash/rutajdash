@@ -6,7 +6,7 @@
 
 .videoContainer > div {
   height: 100%;
-  width: auto;
+  width: 100%;
   background-color: white;
   overflow: hidden;
 }
@@ -15,6 +15,9 @@
   height: 100%;
   width: auto;
   object-fit: cover;
+}
+
+.motion {
   transform: translateX(60%);
   transition: all 2.5s linear;
   transition-delay: 0.3s;

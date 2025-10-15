@@ -5,12 +5,16 @@
 @import "../config/theme/colors.css";
 @import "../config/theme/utilities.css";
 
+@theme static {
+  --font-*: initial;
+  --font-heading: "IBM Plex Sans", sans-serif;
+  --font-subheading: "Inter", serif;
+  --font-body: "Roboto", sans-serif;
+}
+
 :root {
   --background: #121212;
   --foreground: #ffffff;
-  --font-heading: var(--font-ibm-plex-sans), "IBM Plex Sans", sans-serif;
-  --font-subheading: var(--font-inter), "Inter", sans-serif;
-  --font-body: var(--font-roboto), "Roboto", sans-serif;
 
   --font-FILL: 0;
   --font-wght: 400;
@@ -29,7 +33,7 @@
   font-family: "Material Symbols Rounded";
   font-style: normal;
   font-weight: 100 700;
-  font-display: swap;
+  font-display: block;
   src: url(https://fonts.gstatic.com/s/materialsymbolsrounded/v286/sykg-zNym6YjUruM-QrEh7-nyTnjDwKNJ_190FjzaqkNCeE.woff2)
     format("woff2");
 }
@@ -75,7 +79,7 @@ button {
   font-family: inherit;
 }
 
-h1,
+/* h1,
 h2,
 h3 {
   font-family: var(--font-heading), "IBM Plex Sans", sans-serif;
@@ -85,4 +89,4 @@ h4,
 h5,
 h6 {
   font-family: var(--font-subheading), "Inter", sans-serif;
-}
+} */
