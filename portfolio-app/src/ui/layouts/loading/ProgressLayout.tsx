@@ -1,8 +1,6 @@
-"use client";
+import * as motion from "motion/react-client";
 
-import { motion } from "motion/react";
-
-export default function Loading({
+export default function LoadingProgressLayout({
   loadingPercentage,
 }: {
   loadingPercentage: number;
@@ -10,7 +8,7 @@ export default function Loading({
   return (
     <>
       <motion.div
-        key="loading-layout"
+        key="loading-progress-layout"
         className="flex h-auto w-full flex-1 flex-col items-center justify-center overflow-hidden"
         initial={{ opacity: 0, x: 50 }}
         animate={{ opacity: 1, x: 0 }}

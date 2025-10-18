@@ -12,31 +12,57 @@ export default function ChatHeader() {
           src={RDLogo}
           alt="Rutaj Dash Logo"
           className="h-full w-auto py-1"
+          priority
         />
-        <motion.div
-          className="hover:bg-primary/10 active:bg-primary/20 hover:icon-weight-semibold flex aspect-square h-full w-auto cursor-pointer items-center justify-center rounded-full transition-colors duration-200 ease-in-out"
-          initial={{ y: -100 }}
-          animate={{ y: 0 }}
-          exit={{ y: -100 }}
-          transition={{
-            mass: 1,
-            stiffness: 100,
-            damping: 10,
-            type: "spring",
-          }}
-        >
-          <Link
-            href="https://github.com/rutajdash"
-            target="_blank"
-            prefetch={false}
+        <div className="flex h-full w-auto flex-row items-center justify-end">
+          <motion.div
+            className="hover:bg-primary/10 active:bg-primary/20 hover:icon-weight-semibold flex aspect-square h-full w-auto cursor-pointer items-center justify-center rounded-full transition-colors duration-200 ease-in-out"
+            initial={{ y: -100 }}
+            animate={{ y: 0 }}
+            exit={{ y: -100 }}
+            transition={{
+              mass: 1,
+              stiffness: 100,
+              damping: 10,
+              type: "spring",
+            }}
           >
-            <Image
-              src={GitHubLogo}
-              alt="GitHub Logo"
-              className="h-full w-auto p-4"
-            />
-          </Link>
-        </motion.div>
+            <Link
+              href="https://github.com/rutajdash"
+              target="_blank"
+              prefetch={false}
+            >
+              <Image
+                src={GitHubLogo}
+                alt="GitHub Logo"
+                className="h-full w-auto p-4"
+                priority
+              />
+            </Link>
+          </motion.div>
+          <motion.div
+            className="hover:bg-primary/10 active:bg-primary/20 hover:icon-weight-semibold flex aspect-square h-full w-auto cursor-pointer items-center justify-center rounded-full transition-colors duration-200 ease-in-out"
+            initial={{ y: -100 }}
+            animate={{ y: 0 }}
+            exit={{ y: -100 }}
+            transition={{
+              mass: 1,
+              stiffness: 100,
+              damping: 10,
+              type: "spring",
+            }}
+          >
+            <Link
+              href="/help"
+              prefetch={true}
+              className="flex h-full items-center justify-center"
+            >
+              <span className="material-symbols-rounded text-2xl transition-all duration-200 ease-in-out">
+                help
+              </span>
+            </Link>
+          </motion.div>
+        </div>
       </div>
     </div>
   );

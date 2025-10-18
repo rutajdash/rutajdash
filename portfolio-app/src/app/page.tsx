@@ -1,4 +1,4 @@
-import ChatLayout from "@/ui/layouts/chat/Chat";
+import ChatLayout from "@/ui/layouts/chat";
 
 export default function Home() {
   return (

@@ -50,9 +50,16 @@
   white-space: nowrap;
   word-wrap: normal;
   direction: ltr;
+
   font-feature-settings: "liga";
   -webkit-font-feature-settings: "liga";
   -webkit-font-smoothing: antialiased;
+
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+
   font-variation-settings:
     "FILL" var(--font-FILL),
     "wght" var(--font-wght),

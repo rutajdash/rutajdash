@@ -1,8 +1,7 @@
 "use client";
 
-import pebblesData from "@/assets/pebbles.json";
-import { useAppStoreContext } from "@/data/store/app/AppStoreContext";
-import { RefObject, useEffect, useMemo } from "react";
+import { useSpeechContext } from "@/data/store/speech/SpeechContext";
+import { RefObject, useEffect } from "react";
 
 export default function PebblesIntroVideo({
   videoRef,
@@ -11,40 +10,19 @@ export default function PebblesIntroVideo({
   videoRef: RefObject<HTMLVideoElement | null>;
   onEnded: (currentVideoId: number) => void;
 }) {
-  const { videoBlobs } = useAppStoreContext();
-
-  const videoURL = useMemo(() => {
-    if (!videoBlobs) {
-      return null;
-    }
-
-    const videoUrl = pebblesData.videos.find((item) => item.id === 2)?.url;
-    if (!videoUrl) {
-      return null;
-    }
-
-    const blob = videoBlobs.get(videoUrl);
-    if (!blob) {
-      return null;
-    }
-
-    return URL.createObjectURL(blob);
-  }, [videoBlobs]);
+  const { setIsVideoReady, addSpeechText, clearSpeech } = useSpeechContext();
 
   useEffect(() => {
-    // return () => {
-    //   if (videoURL) {
-    //     URL.revokeObjectURL(videoURL);
-    //   }
-    // };
-  }, [videoURL]);
+    setIsVideoReady(true);
+    addSpeechText(
+      "As Mr.Dash's personal assistant, I have access to his resume, portfolio and projects. I can help you with things like telling you more about him, if you want, or about his projects, how they're going and the latest updates. I may be a penguin, but I promise I'm smart. So, what can I help you with today?",
+    );
 
-  return (
-    <video
-      ref={videoRef}
-      src={videoURL ?? undefined}
-      onEnded={() => onEnded(1)}
-      preload="auto"
-    />
-  );
+    return () => {
+      setIsVideoReady(false);
+      clearSpeech();
+    };
+  }, [addSpeechText, clearSpeech, setIsVideoReady]);
+
+  return <video ref={videoRef} onEnded={() => onEnded(1)} preload="auto" />;
 }

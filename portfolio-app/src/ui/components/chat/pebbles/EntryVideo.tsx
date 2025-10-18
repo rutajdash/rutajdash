@@ -1,8 +1,7 @@
 "use client";
 
-import pebblesData from "@/assets/pebbles.json";
-import { useAppStoreContext } from "@/data/store/app/AppStoreContext";
-import { RefObject, useEffect, useMemo, useState } from "react";
+import { useSpeechContext } from "@/data/store/speech/SpeechContext";
+import { RefObject, useEffect, useState } from "react";
 import styles from "./Video.module.css";
 
 export default function PebblesEntryVideo({
@@ -10,44 +9,27 @@ export default function PebblesEntryVideo({
   onEnded,
 }: {
   videoRef: RefObject<HTMLVideoElement | null>;
-  onEnded: (currentVideoId: number) => void;
+  onEnded: () => void;
 }) {
-  const { videoBlobs } = useAppStoreContext();
-
-  const videoURL = useMemo(() => {
-    if (!videoBlobs) {
-      return null;
-    }
-
-    const videoUrl = pebblesData.videos.find((item) => item.id === 1)?.url;
-    if (!videoUrl) {
-      return null;
-    }
-
-    const blob = videoBlobs.get(videoUrl);
-    if (!blob) {
-      return null;
-    }
-
-    return URL.createObjectURL(blob);
-  }, [videoBlobs]);
-
-  useEffect(() => {
-    // return () => {
-    //   if (videoURL) {
-    //     URL.revokeObjectURL(videoURL);
-    //   }
-    // };
-  }, [videoURL]);
+  const { setIsVideoReady, addSpeechText, clearSpeech } = useSpeechContext();
 
   const [isPlaying, setIsPlaying] = useState(false);
+
+  useEffect(() => {
+    setIsVideoReady(true);
+    addSpeechText("Hey, I'm Pebbles!");
+
+    return () => {
+      setIsVideoReady(false);
+      clearSpeech();
+    };
+  }, [addSpeechText, clearSpeech, setIsVideoReady]);
 
   return (
     <video
       ref={videoRef}
-      src={videoURL ?? undefined}
       onPlay={() => setIsPlaying(true)}
-      onEnded={() => onEnded(1)}
+      onEnded={() => onEnded()}
       className={`${styles.motion} ${isPlaying ? styles.play : ""}`}
       preload="auto"
     />
