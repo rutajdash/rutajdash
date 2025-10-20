@@ -11,24 +11,25 @@ export default function PebblesEntryVideo({
   videoRef: RefObject<HTMLVideoElement | null>;
   onEnded: () => void;
 }) {
-  const { setIsVideoReady, addSpeechText, clearSpeech } = useSpeechContext();
+  const { setIsVideoReady, addSpeechText } = useSpeechContext();
 
   const [isPlaying, setIsPlaying] = useState(false);
 
   useEffect(() => {
     setIsVideoReady(true);
-    addSpeechText("Hey, I'm Pebbles!");
 
     return () => {
       setIsVideoReady(false);
-      clearSpeech();
     };
-  }, [addSpeechText, clearSpeech, setIsVideoReady]);
+  }, [setIsVideoReady]);
 
   return (
     <video
       ref={videoRef}
-      onPlay={() => setIsPlaying(true)}
+      onPlay={() => {
+        setIsPlaying(true);
+        addSpeechText("Hey, I'm Pebbles!");
+      }}
       onEnded={() => onEnded()}
       className={`${styles.motion} ${isPlaying ? styles.play : ""}`}
       preload="auto"
