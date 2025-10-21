@@ -1,10 +1,23 @@
 "use client";
 
+import { useAgentContext } from "@/data/store/agent/AgentContext";
 import { motion } from "motion/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function ChatBottomBar() {
+  const {
+    textOnly,
+    setTextOnly,
+    status,
+    isSpeaking,
+    sendUserMessage,
+    transcription,
+  } = useAgentContext();
   const [message, setMessage] = useState("");
+
+  useEffect(() => {
+    setMessage(transcription);
+  }, [transcription]);
 
   return (
     <>
@@ -29,6 +42,8 @@ export default function ChatBottomBar() {
             name="message"
             className="placeholder:text-on-surface-variant field-sizing-content h-auto w-full flex-1 resize-none rounded-2xl bg-transparent px-3 py-2.5 text-base outline-none"
             rows={1}
+            value={message}
+            disabled={status !== "connected"}
             onFocus={(event) => {
               setTimeout(() => {
                 event.target.scrollIntoView({
@@ -47,6 +62,16 @@ export default function ChatBottomBar() {
           <div
             key="send-icon-div"
             className="hover:bg-primary/10 active:bg-primary/20 hover:icon-weight-semibold flex aspect-square h-12 w-12 cursor-pointer items-center justify-center rounded-full transition-colors duration-200 ease-in-out"
+            onClick={() => {
+              if (message.trim().length === 0) {
+                return;
+              }
+              if (status !== "connected") {
+                return;
+              }
+              sendUserMessage(message.trim());
+              setMessage("");
+            }}
           >
             <span className="material-symbols-rounded text-2xl transition-all duration-200 ease-in-out">
               send
@@ -56,9 +81,15 @@ export default function ChatBottomBar() {
             <div
               key="mic-icon-div"
               className="hover:bg-primary/10 active:bg-primary/20 hover:icon-weight-semibold flex aspect-square h-12 w-12 cursor-pointer items-center justify-center rounded-full transition-colors duration-200 ease-in-out"
+              onClick={() => {
+                if (status !== "connected" || isSpeaking) {
+                  return;
+                }
+                setTextOnly((prev) => !prev);
+              }}
             >
               <span className="material-symbols-rounded text-2xl transition-all duration-200 ease-in-out">
-                mic
+                {!textOnly ? "close" : "mic"}
               </span>
             </div>
           )}

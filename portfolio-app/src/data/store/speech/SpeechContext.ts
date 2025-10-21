@@ -7,13 +7,13 @@ import {
 } from "react";
 
 interface SpeechContextProps {
-  speechText: string[];
-  addSpeechText: (text: string) => void;
+  speechHistory: string[];
+  clearSpeechHistory: () => void;
 
-  speechAudio: AudioBuffer[];
-  addSpeechAudio: (audio: string) => void;
-
-  clearSpeech: () => void;
+  latestSpeechEntry: string;
+  startSpeechEntry: (text: string) => void;
+  updateSpeechEntry: (text: string) => void;
+  completeSpeechEntry: (text: string) => void;
 
   currentVideo: number;
   setCurrentVideo: Dispatch<SetStateAction<number>>;
