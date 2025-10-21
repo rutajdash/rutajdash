@@ -10,7 +10,7 @@ export default function PebblesIntroVideo({
   videoRef: RefObject<HTMLVideoElement | null>;
   onEnded: (currentVideoId: number) => void;
 }) {
-  const { setIsVideoReady, addSpeechText } = useSpeechContext();
+  const { setIsVideoReady, completeSpeechEntry } = useSpeechContext();
 
   useEffect(() => {
     setIsVideoReady(true);
@@ -24,7 +24,7 @@ export default function PebblesIntroVideo({
     <video
       ref={videoRef}
       onPlay={() => {
-        addSpeechText(
+        completeSpeechEntry(
           "As Mr.Dash's personal assistant, I have access to his resume, portfolio and projects. I can help you with things like telling you more about him, if you want, or about his projects, how they're going and the latest updates. I may be a penguin, but I promise I'm smart. So, what can I help you with today?",
         );
       }}

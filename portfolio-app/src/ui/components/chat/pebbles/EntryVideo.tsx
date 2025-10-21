@@ -11,7 +11,7 @@ export default function PebblesEntryVideo({
   videoRef: RefObject<HTMLVideoElement | null>;
   onEnded: () => void;
 }) {
-  const { setIsVideoReady, addSpeechText } = useSpeechContext();
+  const { setIsVideoReady, completeSpeechEntry } = useSpeechContext();
 
   const [isPlaying, setIsPlaying] = useState(false);
 
@@ -28,7 +28,7 @@ export default function PebblesEntryVideo({
       ref={videoRef}
       onPlay={() => {
         setIsPlaying(true);
-        addSpeechText("Hey, I'm Pebbles!");
+        completeSpeechEntry("Hey, I'm Pebbles!");
       }}
       onEnded={() => onEnded()}
       className={`${styles.motion} ${isPlaying ? styles.play : ""}`}

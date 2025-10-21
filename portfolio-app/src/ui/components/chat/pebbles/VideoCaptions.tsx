@@ -2,11 +2,16 @@
 
 import { useSpeechContext } from "@/data/store/speech/SpeechContext";
 import { Typewriter } from "@/ui/components/widgets";
-import { useRef } from "react";
+import { useMemo, useRef } from "react";
 
 export default function VideoCaptions() {
-  const { speechText } = useSpeechContext();
+  const { speechHistory, latestSpeechEntry } = useSpeechContext();
   const scrollRef = useRef<HTMLDivElement>(null);
+
+  const speechText = useMemo(
+    () => [...speechHistory, latestSpeechEntry],
+    [latestSpeechEntry, speechHistory],
+  );
 
   return (
     <div className="px-4 pt-3">
