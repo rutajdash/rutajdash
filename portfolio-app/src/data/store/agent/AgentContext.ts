@@ -2,8 +2,6 @@ import { createContext, Dispatch, SetStateAction, useContext } from "react";
 import { Status } from "@elevenlabs/react";
 
 interface AgentContextProps {
-  textOnly: boolean;
-  setTextOnly: Dispatch<SetStateAction<boolean>>;
   micMuted: boolean;
   setMicMuted: Dispatch<SetStateAction<boolean>>;
   volume: number;

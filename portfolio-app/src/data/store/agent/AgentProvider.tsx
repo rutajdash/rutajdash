@@ -13,7 +13,6 @@ export default function AgentProvider({
   const { startSpeechEntry, updateSpeechEntry, completeSpeechEntry } =
     useSpeechContext();
 
-  const [textOnly, setTextOnly] = useState<boolean>(true);
   const [micMuted, setMicMuted] = useState<boolean>(true);
   const [volume, setVolume] = useState<number>(0.8);
 
@@ -28,10 +27,9 @@ export default function AgentProvider({
     sendUserActivity,
   } = useConversation({
     agentId: "agent_7401k7mtzpz7f3ts2vq4f7xtge3y",
-    serverLocation: "in-residency",
+    // serverLocation: "in-residency",
     micMuted,
     volume,
-    textOnly,
     useWakeLock: true,
     preferHeadphonesForIosDevices: true,
     // clientTools: {}, // Record<string, (parameters: any) => Promise<string | number | void> | string | number | void>
@@ -61,6 +59,7 @@ export default function AgentProvider({
       },
 
       onMessage(props) {
+        console.debug(`Pebbles | Agent Chat Response Complete | `, props);
         if (props.source === "ai") {
           completeSpeechEntry(props.message);
         } else if (props.source === "user") {
@@ -68,6 +67,7 @@ export default function AgentProvider({
         }
       },
       onAgentChatResponsePart(props) {
+        console.debug(`Pebbles | Agent Chat Response Part | `, props);
         if (props.type === "start") {
           startSpeechEntry(props.text);
         } else if (props.type === "delta") {
@@ -99,19 +99,12 @@ export default function AgentProvider({
     return () => {
       endSession();
     };
-  }, [
-    completeSpeechEntry,
-    endSession,
-    startSession,
-    startSpeechEntry,
-    updateSpeechEntry,
-  ]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <AgentContext.Provider
       value={{
-        textOnly,
-        setTextOnly,
         micMuted,
         setMicMuted,
         volume,

@@ -12,8 +12,8 @@ export default function ChatLayout() {
       <SpeechProvider>
         <LoadingLayout>
           <AgentProvider>
-            <ChatConversationLayout key="chat-conversation-layout" />
-            <ChatBottomBar key="chat-bottom-bar-layout" />
+            <ChatConversationLayout />
+            <ChatBottomBar />
           </AgentProvider>
         </LoadingLayout>
       </SpeechProvider>

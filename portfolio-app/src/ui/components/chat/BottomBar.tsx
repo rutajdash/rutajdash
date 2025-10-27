@@ -6,8 +6,8 @@ import { useEffect, useState } from "react";
 
 export default function ChatBottomBar() {
   const {
-    textOnly,
-    setTextOnly,
+    micMuted,
+    setMicMuted,
     status,
     isSpeaking,
     sendUserMessage,
@@ -85,11 +85,11 @@ export default function ChatBottomBar() {
                 if (status !== "connected" || isSpeaking) {
                   return;
                 }
-                setTextOnly((prev) => !prev);
+                setMicMuted((prev) => !prev);
               }}
             >
               <span className="material-symbols-rounded text-2xl transition-all duration-200 ease-in-out">
-                {!textOnly ? "close" : "mic"}
+                {!micMuted ? "close" : "mic"}
               </span>
             </div>
           )}

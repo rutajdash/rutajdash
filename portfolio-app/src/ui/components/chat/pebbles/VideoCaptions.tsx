@@ -9,7 +9,10 @@ export default function VideoCaptions() {
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const speechText = useMemo(
-    () => [...speechHistory, latestSpeechEntry],
+    () =>
+      [...speechHistory, latestSpeechEntry].filter(
+        (entry) => entry.trim() !== "",
+      ),
     [latestSpeechEntry, speechHistory],
   );
 

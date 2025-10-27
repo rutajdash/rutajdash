@@ -1,7 +1,7 @@
 "use client";
 
 import pebblesData from "@/assets/pebbles.json";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useAppStoreContext } from "../app/AppStoreContext";
 import { SpeechContext } from "./SpeechContext";
 
@@ -13,26 +13,21 @@ export default function SpeechProvider({
   const [speechHistory, setSpeechHistory] = useState<string[]>([]);
   const [latestSpeechEntry, setLatestSpeechEntry] = useState<string>("");
 
-  const startSpeechEntry = useMemo(() => {
-    return (text: string) => {
-      setLatestSpeechEntry(text);
-    };
+  const startSpeechEntry = useCallback((text: string) => {
+    setLatestSpeechEntry(text);
   }, []);
-  const updateSpeechEntry = useMemo(() => {
-    return (text: string) => {
-      setLatestSpeechEntry((prev) => prev + text);
-    };
+  const updateSpeechEntry = useCallback((text: string) => {
+    setLatestSpeechEntry((prev) => prev + text);
   }, []);
-  const completeSpeechEntry = useMemo(() => {
-    return (text: string) => {
-      setLatestSpeechEntry("");
-      setSpeechHistory((prev) => [...prev, text]);
-    };
+  const completeSpeechEntry = useCallback((text: string) => {
+    const cleanedText = text.trim().endsWith("\n")
+      ? text.trim().slice(0, -1)
+      : text.trim();
+    setLatestSpeechEntry("");
+    setSpeechHistory((prev) => [...prev, cleanedText]);
   }, []);
-  const clearSpeechHistory = useMemo(() => {
-    return () => {
-      setSpeechHistory([]);
-    };
+  const clearSpeechHistory = useCallback(() => {
+    setSpeechHistory([]);
   }, []);
 
   const appStoreContext = useAppStoreContext();
