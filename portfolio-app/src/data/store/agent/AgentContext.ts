@@ -1,18 +1,7 @@
-import { createContext, Dispatch, SetStateAction, useContext } from "react";
-import { Status } from "@elevenlabs/react";
+import { createContext, useContext } from "react";
 
 interface AgentContextProps {
-  micMuted: boolean;
-  setMicMuted: Dispatch<SetStateAction<boolean>>;
-  volume: number;
-  setVolume: Dispatch<SetStateAction<number>>;
-
-  status: Status;
-  isSpeaking: boolean;
-  sendUserMessage: (text: string) => void;
-  sendUserActivity: () => void;
-
-  transcription: string;
+  agent?: undefined;
 }
 
 export const AgentContext = createContext<AgentContextProps | undefined>(
