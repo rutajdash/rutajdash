@@ -10,6 +10,13 @@ import type {
   SocketData,
 } from "./types/server.types";
 
+if (!process.env.GOOGLE_GENAI_API_KEY) {
+  throw new Error("Google Gemini API Key not defined in environment variables");
+}
+if (!process.env.ELEVENLABS_API_KEY || !process.env.XI_API_KEY) {
+  throw new Error("ElevenLabs API Keys not defined in environment variables");
+}
+
 const userSocketServer = new Server<
   ReceivedEvents,
   EmittedEvents,
@@ -31,9 +38,7 @@ const speechSocketServer = new WebSocket(
   "wss://api.elevenlabs.io/v1/text-to-speech/vBKc2FfBKJfcZNyEt1n6/multi-stream-input",
   {
     headers: {
-      "xi-api-key":
-        process.env.ELEVENLABS_API_KEY ||
-        "sk_a6a1d37da8a56f5603b5866956441f30e8f22b86892f5597",
+      "xi-api-key": process.env.ELEVENLABS_API_KEY,
     },
   },
 );
@@ -58,7 +63,7 @@ console.info("Socket.IO server running at http://localhost:8000/");
 function gracefulShutdown() {
   try {
     console.info("Shutting down server...");
-    speechSocketServer.close(0);
+    speechSocketServer.close();
     userSocketServer.close((error?: Error) => {
       if (error) {
         console.error("Error during Socket.IO server shutdown:", error);

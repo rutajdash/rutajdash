@@ -3,10 +3,11 @@
   "type": "module",
   "packageManager": "yarn@4.10.3",
   "scripts": {
-    "start": "ncc run src/index.ts",
+    "start": "dotenvx run -- ncc run src/index.ts",
     "build": "ncc build src/index.ts -m -o build"
   },
   "dependencies": {
+    "@dotenvx/dotenvx": "^1.51.1",
     "@elevenlabs/elevenlabs-js": "^2.21.0",
     "@google/genai": "^1.28.0",
     "socket.io": "^4.8.1",

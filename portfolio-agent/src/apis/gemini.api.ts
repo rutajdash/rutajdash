@@ -3,10 +3,12 @@ import { Socket, WebSocket } from "@/types/server.types";
 import { GenerateContentResponse, GoogleGenAI } from "@google/genai";
 import { sendSpeechChunk } from "./elevenlabs.api";
 
+if (!process.env.GOOGLE_GENAI_API_KEY) {
+  throw new Error("Google Gemini API Key not defined in environment variables");
+}
+
 const google = new GoogleGenAI({
-  apiKey:
-    process.env.GOOGLE_GENAI_API_KEY ||
-    "AIzaSyD6rP_7fER07f8g3pz1KA3iHrAsA2FNxg4",
+  apiKey: process.env.GOOGLE_GENAI_API_KEY,
 });
 
 export async function getAgentResponse({

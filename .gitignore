@@ -22,3 +22,6 @@ ehthumbs.db
 # Linux system files
 *~
 .nfs*
+
+# VSCode settings
+.vscode/

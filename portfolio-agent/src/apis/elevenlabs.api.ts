@@ -3,10 +3,12 @@ import type { Socket, WebSocket } from "@/types/server.types";
 import { ElevenLabsClient } from "@elevenlabs/elevenlabs-js";
 import { SpeechToTextChunkResponseModel } from "@elevenlabs/elevenlabs-js/api";
 
+if (!process.env.ELEVENLABS_API_KEY) {
+  throw new Error("ElevenLabs API Key not defined in environment variables");
+}
+
 const elevenlabs = new ElevenLabsClient({
-  apiKey:
-    process.env.ELEVENLABS_API_KEY ||
-    "sk_a6a1d37da8a56f5603b5866956441f30e8f22b86892f5597",
+  apiKey: process.env.ELEVENLABS_API_KEY,
 });
 
 function sendSpeechSocketMessage({
