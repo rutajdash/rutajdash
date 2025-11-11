@@ -49,7 +49,7 @@ handleSpeechSocket({
 
 userSocketServer.on("connection", function (userSocket: Socket) {
   console.info(
-    `User Socket Server | User ${userSocket.id} | Connected | Total Connections: ${userSocketServer.engine.clientsCount}`,
+    `User Socket Server | User ${userSocket.id} | Connected | Total Connections: ${String(userSocketServer.engine.clientsCount)}`,
   );
 
   handleUserSocket({
@@ -64,7 +64,7 @@ function gracefulShutdown() {
   try {
     console.info("Shutting down server...");
     speechSocketServer.close();
-    userSocketServer.close((error?: Error) => {
+    void userSocketServer.close((error?: Error) => {
       if (error) {
         console.error("Error during Socket.IO server shutdown:", error);
         process.exit(1);
