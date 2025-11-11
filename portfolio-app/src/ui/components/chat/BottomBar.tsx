@@ -1,11 +1,13 @@
 "use client";
 
+import { useAgentContext } from "@/data/store/agent/AgentContext";
 import { AudioFormat, CommitStrategy, useScribe } from "@elevenlabs/react";
 import { motion } from "motion/react";
 import { useState } from "react";
 
 export default function ChatBottomBar() {
   const [message, setMessage] = useState("");
+  const { agentSocket, isSocketConnected } = useAgentContext();
 
   const scribe = useScribe({
     modelId: "scribe_v2_realtime",
@@ -52,7 +54,7 @@ export default function ChatBottomBar() {
             className="placeholder:text-on-surface-variant field-sizing-content h-auto w-full flex-1 resize-none rounded-2xl bg-transparent px-3 py-2.5 text-base outline-none"
             rows={1}
             value={message}
-            // disabled={status !== "connected"}
+            disabled={!agentSocket || !isSocketConnected}
             onFocus={(event) => {
               setTimeout(() => {
                 event.target.scrollIntoView({
@@ -75,10 +77,10 @@ export default function ChatBottomBar() {
               if (message.trim().length === 0) {
                 return;
               }
-              // if (status !== "connected") {
-              //   return;
-              // }
-              // sendUserMessage(message.trim());
+              if (!agentSocket || !isSocketConnected) {
+                return;
+              }
+              agentSocket.emit("userMessage", message.trim());
               setMessage("");
             }}
           >

@@ -11,7 +11,6 @@ interface SpeechContextProps {
   clearSpeechHistory: () => void;
 
   latestSpeechEntry: string;
-  startSpeechEntry: (text: string) => void;
   updateSpeechEntry: (text: string) => void;
   completeSpeechEntry: (text: string) => void;
 

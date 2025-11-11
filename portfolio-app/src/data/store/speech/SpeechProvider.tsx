@@ -13,9 +13,6 @@ export default function SpeechProvider({
   const [speechHistory, setSpeechHistory] = useState<string[]>([]);
   const [latestSpeechEntry, setLatestSpeechEntry] = useState<string>("");
 
-  const startSpeechEntry = useCallback((text: string) => {
-    setLatestSpeechEntry(text);
-  }, []);
   const updateSpeechEntry = useCallback((text: string) => {
     setLatestSpeechEntry((prev) => prev + text);
   }, []);
@@ -87,7 +84,6 @@ export default function SpeechProvider({
         speechHistory,
         clearSpeechHistory,
         latestSpeechEntry,
-        startSpeechEntry,
         updateSpeechEntry,
         completeSpeechEntry,
         currentVideo,
