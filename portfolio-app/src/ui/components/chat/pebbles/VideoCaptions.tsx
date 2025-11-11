@@ -22,9 +22,7 @@ export default function VideoCaptions() {
         ref={scrollRef}
         className="bg-surface-container-high max-h-40 min-h-20 overflow-scroll rounded-2xl px-2 py-2"
       >
-        <p className="text-on-surface-variant text-sm">
-          <Typewriter text={speechText.join("\n")} scrollRef={scrollRef} />
-        </p>
+        <Typewriter text={speechText.join("\n")} scrollRef={scrollRef} />
       </div>
     </div>
   );
