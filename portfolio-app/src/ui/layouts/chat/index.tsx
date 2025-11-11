@@ -1,4 +1,3 @@
-import AgentProvider from "@/data/store/agent/AgentProvider";
 import SpeechProvider from "@/data/store/speech/SpeechProvider";
 import ChatBottomBar from "@/ui/components/chat/BottomBar";
 import ChatHeader from "@/ui/components/chat/Header";
@@ -11,10 +10,8 @@ export default function ChatLayout() {
       <ChatHeader />
       <SpeechProvider>
         <LoadingLayout>
-          <AgentProvider>
-            <ChatConversationLayout />
-            <ChatBottomBar />
-          </AgentProvider>
+          <ChatConversationLayout />
+          <ChatBottomBar />
         </LoadingLayout>
       </SpeechProvider>
     </>
