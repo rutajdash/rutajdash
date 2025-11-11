@@ -10,10 +10,7 @@ import type {
   SocketData,
 } from "./types/server.types";
 
-if (!process.env.GOOGLE_GENAI_API_KEY) {
-  throw new Error("Google Gemini API Key not defined in environment variables");
-}
-if (!process.env.ELEVENLABS_API_KEY || !process.env.XI_API_KEY) {
+if (!process.env.XI_API_KEY) {
   throw new Error("ElevenLabs API Keys not defined in environment variables");
 }
 
@@ -38,7 +35,7 @@ const speechSocketServer = new WebSocket(
   "wss://api.elevenlabs.io/v1/text-to-speech/vBKc2FfBKJfcZNyEt1n6/multi-stream-input",
   {
     headers: {
-      "xi-api-key": process.env.ELEVENLABS_API_KEY,
+      "xi-api-key": process.env.XI_API_KEY,
     },
   },
 );

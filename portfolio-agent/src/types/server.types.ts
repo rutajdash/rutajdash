@@ -7,8 +7,6 @@ import type {
 
 export type ReceivedEvents = {
   userMessage: (message: string) => void;
-  userAudioChunk: (audioChunk: string) => void;
-  userSpeechEnd: () => void;
 };
 
 export type EmittedEvents = {
@@ -18,7 +16,6 @@ export type EmittedEvents = {
 };
 
 export type SocketData = {
-  audioChunks: Int16Array[];
   history: Content[];
   keepAliveInterval?: NodeJS.Timeout;
 };
