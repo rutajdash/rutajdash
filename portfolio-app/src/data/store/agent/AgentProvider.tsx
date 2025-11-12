@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { io, Socket } from "socket.io-client";
+import { useAudioContext } from "../audio/AudioContext";
 import { useSpeechContext } from "../speech/SpeechContext";
 import { AgentContext, EmittedEvents, ReceivedEvents } from "./AgentContext";
 
@@ -15,6 +16,7 @@ export default function AgentProvider({
   const [isSocketConnected, setIsSocketConnected] = useState(false);
 
   const { updateSpeechEntry, completeSpeechEntry } = useSpeechContext();
+  const { addAudioChunkToQueue } = useAudioContext();
 
   useEffect(() => {
     const socket: Socket<ReceivedEvents, EmittedEvents> = io("localhost:8000", {
@@ -54,7 +56,8 @@ export default function AgentProvider({
     });
 
     agentSocket.on("agentAudioChunk", (audioChunk: string) => {
-      console.log("Agent Audio Chunk:", audioChunk);
+      // Handle audio chunk if needed
+      addAudioChunkToQueue(audioChunk);
     });
 
     agentSocket.on("agentResponseEnd", (message: string) => {
@@ -71,7 +74,12 @@ export default function AgentProvider({
       agentSocket.off("agentResponseEnd");
       agentSocket.disconnect();
     };
-  }, [agentSocket, completeSpeechEntry, updateSpeechEntry]);
+  }, [
+    addAudioChunkToQueue,
+    agentSocket,
+    completeSpeechEntry,
+    updateSpeechEntry,
+  ]);
 
   return (
     <AgentContext.Provider
