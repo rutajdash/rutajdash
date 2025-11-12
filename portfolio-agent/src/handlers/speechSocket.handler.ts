@@ -29,10 +29,7 @@ export default function handleSpeechSocket({
       Buffer.from(rawData as ArrayBuffer).toString("utf-8"),
     ) as IncomingSpeech;
 
-    if (data.isFinal) {
-      // console.info(
-      //   `ElevenLabs WebSocket | Final message received for contextId: ${data.contextId}`,
-      // );
+    if (!data.audio) {
       return;
     }
 

@@ -1,7 +1,7 @@
 import type { Content } from "@/types/content.types";
 import { Socket, WebSocket } from "@/types/server.types";
 import { GenerateContentResponse, GoogleGenAI } from "@google/genai";
-import { sendSpeechChunk } from "./elevenlabs.api";
+import { flushSpeechContext, sendSpeechChunk } from "./elevenlabs.api";
 
 if (!process.env.GOOGLE_GENAI_API_KEY) {
   throw new Error("Google Gemini API Key not defined in environment variables");
@@ -142,6 +142,11 @@ export async function handleAgentResponse({
       text: content,
     });
   }
+
+  flushSpeechContext({
+    userSocket,
+    speechSocket,
+  });
 
   return textChunks.join(" ");
 }
