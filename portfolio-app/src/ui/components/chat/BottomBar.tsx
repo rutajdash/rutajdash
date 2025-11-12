@@ -12,11 +12,9 @@ export default function ChatBottomBar() {
   const scribe = useScribe({
     modelId: "scribe_v2_realtime",
     onPartialTranscript: (data) => {
-      console.log("Partial Transcript:", data.text);
       setMessage((prev) => prev + data.text);
     },
     onCommittedTranscript: (data) => {
-      console.log("Committed Transcript:", data.text);
       setMessage(data.text);
       scribe.disconnect();
     },

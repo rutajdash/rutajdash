@@ -27,7 +27,6 @@ export default function AudioProvider({
       return;
     }
 
-    console.log("Playing next");
     setIsPlaying(true);
     const nextBuffer = audioQueue[0];
     const source = audioCtxRef.current.createBufferSource();
