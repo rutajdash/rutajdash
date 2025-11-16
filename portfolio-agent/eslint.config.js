@@ -17,5 +17,12 @@ export default defineConfig([
         project: "./tsconfig.json",
       },
     },
+    rules: {
+      "@typescript-eslint/no-unused-vars": [
+        "error",
+        { argsIgnorePattern: "^_", varsIgnorePattern: "^_" },
+      ],
+      "@typescript-eslint/no-confusing-void-expression": "off",
+    },
   },
 ]);
