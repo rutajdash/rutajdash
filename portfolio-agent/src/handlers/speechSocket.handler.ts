@@ -20,8 +20,10 @@ export default function handleSpeechSocket({
   });
 
   speechSocketServer.on("close", function (code, _reason) {
-    console.info(`ElevenLabs WebSocket | Disconnected | Code: ${code}`);
-    userSocketServer.close();
+    console.info(
+      `ElevenLabs WebSocket | Disconnected | Code: ${code.toString()}`,
+    );
+    void userSocketServer.close();
   });
 
   speechSocketServer.on("message", function (rawData, _isBinary) {
