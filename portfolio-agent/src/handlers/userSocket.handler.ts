@@ -6,6 +6,7 @@ import {
 import { getAgentResponse, handleAgentResponse } from "@/apis/gemini.api";
 import { Content } from "@/types/content.types";
 import { DisconnectReason, Socket, WebSocket } from "@/types/server.types";
+import { FunctionResponse, PartUnion } from "@google/genai";
 
 export default function handleUserSocket({
   userSocket,
@@ -60,7 +61,11 @@ export default function handleUserSocket({
       message,
     });
 
-    const agentResponse = await handleAgentResponse({
+    const {
+      text: agentResponse,
+      functionCalls,
+      functionResponses,
+    } = await handleAgentResponse({
       userSocket,
       speechSocket,
       messageStream,
@@ -81,10 +86,89 @@ export default function handleUserSocket({
           {
             text: agentResponse,
           },
+          ...functionCalls.map((functionCall) => ({
+            functionCall,
+          })),
         ],
       },
     );
 
     userSocket.emit("agentResponseEnd", agentResponse);
+
+    if (functionResponses.length > 0) {
+      userSocket.emit(
+        "agentResponseEnd",
+        JSON.stringify({ functionCalls, functionResponses }),
+      );
+      await handleAgentIteration({
+        functionResponses,
+        userSocket,
+        speechSocket,
+      });
+    }
   });
+}
+
+async function handleAgentIteration({
+  functionResponses,
+  userSocket,
+  speechSocket,
+}: {
+  functionResponses: FunctionResponse[];
+  userSocket: Socket;
+  speechSocket: WebSocket;
+}) {
+  const messageStream = await getAgentResponse({
+    history: userSocket.data.history,
+    message: functionResponses.map<PartUnion>((functionResponse) => ({
+      functionResponse,
+    })),
+  });
+
+  const {
+    text: agentResponse,
+    functionCalls,
+    functionResponses: functionResponsesNext,
+  } = await handleAgentResponse({
+    userSocket,
+    speechSocket,
+    messageStream,
+  });
+
+  userSocket.data.history.push(
+    {
+      role: "user",
+      parts: functionResponses.map((functionResponse) => ({
+        functionResponse,
+      })),
+    },
+    {
+      role: "model",
+      parts: [
+        {
+          text: agentResponse,
+        },
+        ...functionCalls.map((functionCall) => ({
+          functionCall,
+        })),
+      ],
+    },
+  );
+
+  userSocket.emit("agentResponseEnd", agentResponse);
+
+  if (functionResponsesNext.length > 0) {
+    userSocket.emit(
+      "agentResponseEnd",
+      JSON.stringify({
+        functionCalls,
+        functionResponses: functionResponsesNext,
+      }),
+    );
+    await handleAgentIteration({
+      functionResponses: functionResponsesNext,
+      userSocket,
+      speechSocket,
+    });
+  }
 }
